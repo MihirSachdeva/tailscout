@@ -13,8 +13,8 @@ class Job(models.Model):
     BACTERIA_3 = 'B2'
     BACTERIA_CHOICES = [
         (BACTERIA_1, 'Bacteria_1'),
-        (BACTERIA_1, 'Bacteria_1'),
-        (BACTERIA_1, 'Bacteria_1'),
+        (BACTERIA_2, 'Bacteria_2'),
+        (BACTERIA_3, 'Bacteria_3'),
     ]
 
     # choices for status
@@ -41,8 +41,9 @@ class Job(models.Model):
     status = models.CharField(
         max_length=2,
         choices=STATUS_CHOICES,
-        blank=False,
-        null=False
+        default=STEP_1,
+        blank=True,
+        null=True
     )
 
     class Meta:
