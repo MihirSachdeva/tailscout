@@ -8,7 +8,7 @@ class Job(models.Model):
     """
 
     # choices for bacteria
-    BACTERIA_1 = 'B1'
+    BACTERIA_1 = 'acinetobacter baumannii'
     BACTERIA_2 = 'B2'
     BACTERIA_3 = 'B2'
     BACTERIA_CHOICES = [
@@ -28,7 +28,7 @@ class Job(models.Model):
     ]
 
     bacteria = models.CharField(
-        max_length=2,
+        max_length=256,
         choices=BACTERIA_CHOICES,
         blank=False,
         null=False

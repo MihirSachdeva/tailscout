@@ -2,7 +2,7 @@ from rest_framework import viewsets, status
 from rest_framework.response import Response
 from ..serializers import JobSerializer
 from ...models import Job
-
+import os
 
 class JobViewSet(viewsets.ModelViewSet):
     serializer_class = JobSerializer
@@ -20,10 +20,11 @@ class JobViewSet(viewsets.ModelViewSet):
         new_job_bacteria = new_job.bacteria
         new_job_email_id = new_job.email_id
 
-        # os.system => gene_detection --filename new_job_id
+        os.system(f"python /home/mihir/Desktop/tailscout/tailscout/tailscout_app/genee.py --bacteria {new_job_bacteria} --filename {new_job_id}")
         # new_job_id.fasta created
-        # new_job.status = "S1"
-        # new_job.save()
+        new_job.status = "S1"
+        print("Step 1 done.")
+        new_job.save()
 
 
         # os.system => clustalo, give new_job_id.fasta and new_job.email_id
