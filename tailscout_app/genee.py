@@ -26,27 +26,28 @@ class Gene:
         self.gene_name = gene_name
         self.bacteria_name = bacteria_name
 # FUNCTION FOR READING AND EDITING CSV FILE       
-def load_csv():
-    if os.path.isfile('phage_details.csv'):
-        file_location = 'phage_details.csv'
-    else:
-        file_location = os.path.join(os.path.dirname(sys.executable), 'phage_details.csv')
-    genes_file = open(file_location, mode='r', newline='')
-    genes_file_reader = csv.reader(genes_file, delimiter=',')
-    genes_info_dict = {}
-    bacteria_dict={}
-    next( genes_file_reader)
-    for row in genes_file_reader:
-        gene_code= row[1]
-        virus_name=str.lower(row[2])
-        gene_name =row[3]
-        bacteria_name=str.lower(row[0])
-        genes_info_dict[gene_code]= Gene(gene_code, virus_name,gene_name,bacteria_name)
-        if bacteria_name not in bacteria_dict:
-            bacteria_dict[bacteria_name] = set()
-        bacteria_dict[bacteria_name].add(gene_code)
+# def load_csv():
+#     if os.path.isfile('phage_details.csv'):
+#         file_location = 'phage_details.csv'
+#     else:
+#         file_location = os.path.join(os.path.dirname(sys.executable), 'phage_details.csv')
+#     print("phage_details.csv:" + file_location)
+#     genes_file = open(file_location, mode='r', newline='')
+#     genes_file_reader = csv.reader(genes_file, delimiter=',')
+#     genes_info_dict = {}
+#     bacteria_dict={}
+#     next( genes_file_reader)
+#     for row in genes_file_reader:
+#         gene_code= row[1]
+#         virus_name=str.lower(row[2])
+#         gene_name =row[3]
+#         bacteria_name=str.lower(row[0])
+#         genes_info_dict[gene_code]= Gene(gene_code, virus_name,gene_name,bacteria_name)
+#         if bacteria_name not in bacteria_dict:
+#             bacteria_dict[bacteria_name] = set()
+#         bacteria_dict[bacteria_name].add(gene_code)
  
-    return genes_info_dict,bacteria_dict
+#     return genes_info_dict,bacteria_dict
 
 
 # SEARCHES FOR TAIL FIBER PROTEINS FROM FASTA FILE
@@ -56,12 +57,13 @@ def search_phage_tails_from_bacterium(input_bacteria):
     # if os.path.isfile('sequence_phages.fasta'):
     #     file_location = 'sequence_phages.fasta'
     # else:
-    # file_location = os.path.join(os.path.dirname(sys.executable), 'sequence_phages.fasta')
-    dname = os.path.dirname(__file__)
-    fname = os.path.join(dname, 'sequence_phages.fasta')
-    print("sequence_phages.fasta location")
-    print(fname)
-    file = open(fname)
+    #     file_location = os.path.join(os.path.dirname(sys.executable), 'sequence_phages.fasta')
+    # print("sequence_phages.fasta:" + file_location)
+    # dname = os.path.dirname(__file__)
+    # fname = os.path.join(dname, 'sequence_phages.fasta')
+    # print("sequence_phages.fasta location")
+    # print(fname)
+    file = open("/home/mihir/Desktop/tailscout/tailscout/tailscout_app/sequence_phages.fasta")
     line = file.readline()
     ans_lists = []
     while line != '':
@@ -88,7 +90,7 @@ def amino_seq_finder(gene_code):
     # else:
         #  file_location = os.path.join(os.path.dirname(sys.executable), 'sequence_phages.fasta')
     amino_seq = ''
-    file = open("sequence_phages.fasta")
+    file = open("/home/mihir/Desktop/tailscout/tailscout/tailscout_app/sequence_phages.fasta")
     found_it = False
     line = file.readline()
     while line != '':
@@ -117,4 +119,5 @@ file_name = filename + ".fasta"
 with open(file_name, "w+") as file:
 	file.writelines(s)
 
+    # UPDATE JOB STATUS HERE!
 	
