@@ -56,8 +56,12 @@ def search_phage_tails_from_bacterium(input_bacteria):
     # if os.path.isfile('sequence_phages.fasta'):
     #     file_location = 'sequence_phages.fasta'
     # else:
-    file_location = os.path.join(os.path.dirname(sys.executable), 'sequence_phages.fasta')
-    file = open(file_location)
+    # file_location = os.path.join(os.path.dirname(sys.executable), 'sequence_phages.fasta')
+    dname = os.path.dirname(__file__)
+    fname = os.path.join(dname, 'sequence_phages.fasta')
+    print("sequence_phages.fasta location")
+    print(fname)
+    file = open(fname)
     line = file.readline()
     ans_lists = []
     while line != '':
@@ -79,12 +83,12 @@ my_records = search_phage_tails_from_bacterium(input_bacteria = bacteria)
 # FINDING AMINO ACID SEQUENCE FROM FASTA FILE 
  
 def amino_seq_finder(gene_code):
-    if os.path.isfile('sequence_phages.fasta'):
-       file_location = 'sequence_phages.fasta'
-    else:
-         file_location = os.path.join(os.path.dirname(sys.executable), 'sequence_phages.fasta')
+    # if os.path.isfile('sequence_phages.fasta'):
+    #    file_location = 'sequence_phages.fasta'
+    # else:
+        #  file_location = os.path.join(os.path.dirname(sys.executable), 'sequence_phages.fasta')
     amino_seq = ''
-    file = open(file_location)
+    file = open("sequence_phages.fasta")
     found_it = False
     line = file.readline()
     while line != '':

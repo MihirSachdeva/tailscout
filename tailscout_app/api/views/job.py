@@ -20,7 +20,11 @@ class JobViewSet(viewsets.ModelViewSet):
         new_job_bacteria = new_job.bacteria
         new_job_email_id = new_job.email_id
 
-        os.system(f"python /home/mihir/Desktop/tailscout/tailscout/tailscout_app/genee.py --bacteria {new_job_bacteria} --filename {new_job_id}")
+        # /home/mihir/Desktop/tailscout/tailscout/tailscout_app/genee.py
+        dname = os.path.dirname(__file__)
+        fname = os.path.join(dname, '../../genee.py')
+        print(fname)
+        os.system(f"python {fname} --bacteria {new_job_bacteria} --filename {new_job_id}")
         # new_job_id.fasta created
         new_job.status = "S1"
         print("Step 1 done.")
