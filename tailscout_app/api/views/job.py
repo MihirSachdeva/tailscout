@@ -81,12 +81,18 @@ class JobViewSet(viewsets.ModelViewSet):
         for f in files:
             shutil.copy(f, f"{new_job_id}_folder")
 
-        os.system(f"perl {fname3} submit file={new_job_id}a.fasta mode=batch format=fasta email={new_job_email_id} ")
+        os.system(f"perl {fname3} submit file={new_job_id}a.fasta mode=single format=fasta email={new_job_email_id} ")
         new_job.status = "S3"
         print("Step 3 done!")
+
+        txt_file = f"{os.getcwd()}/url.txt"
+        with open(txt_file, 'r') as txtfile:
+            data = txtfile.read()
+            url = data.split('\\n')[0]
+
         new_job.save()
 
         return Response(
-                {'message': 'Data entered!'},
+                {'url': url},
                 status=status.HTTP_200_OK
         )
