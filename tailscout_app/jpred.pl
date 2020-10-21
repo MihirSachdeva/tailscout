@@ -258,6 +258,10 @@ subcommand 'submit' => sub {
 		} else {
 		    print "Created JPred job with jobid: $id\n";
 		}
+		        open(my $fh, '>', 'url.txt');
+        print $fh "$url\n";
+        close $fh;
+		
 	    } else {
 		print "\n\nERROR: ";
 		print $response->content;
